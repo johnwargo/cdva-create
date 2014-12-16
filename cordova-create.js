@@ -200,7 +200,7 @@ if (userArgs.length > 2) {
   if (plugin_list.length > 0) {
     // Loop through plugins array rather than hard-coding this list
     plugin_list.forEach(function (plugin) {
-      console.log("Adding %s plugin to project".info, plugin);
+      console.log("Adding %s plugin to project".yellow, plugin);
       executeCordovaCommand('plugin add ' + plugin);
     });
   } else {
@@ -212,7 +212,7 @@ if (userArgs.length > 2) {
   //========================================================================
   // Finished
   //========================================================================
-  console.log("\nAll done!\n".help);
+  console.log("\nAll done!\n".green);
 
 } else {
   //Do we have only one parameter and it's the word 'config'?
