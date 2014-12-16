@@ -18,22 +18,13 @@ var shelljs = require('shelljs');
 //*************************************
 //some constants
 //*************************************
-var commaSpace = ', ';
 var cmdStr = 'cdva-create folder app_id app_name [platform list]';
+var commaSpace = ', ';
 var debug = false;
-var helpFile = 'help.txt';
 var plugin_list;
 var quoteMark = '"';
-var theStars = "***************************************";
 var space = ' ';
-
-colors.setTheme({
-  info: 'grey',
-  help: 'green',
-  warn: 'yellow',
-  debug: 'blue',
-  error: 'red'
-});
+var theStars = "********************************";
 
 function listArray(theName, theArray) {
   //Write the contents of an array to the console
@@ -44,6 +35,7 @@ function listArray(theName, theArray) {
 }
 
 function showHelp() {
+  var helpFile = 'help.txt';
   //read the help file
   var raw = fs.readFileSync(path.join(__dirname, helpFile)).toString('utf8');
   //write the contents of the help file to the console
@@ -64,7 +56,7 @@ function executeCordovaCommand(commandStr) {
   console.log('Command string: %s', theCmd);
   var resCode = shelljs.exec(theCmd).code;
   if (resCode !== 0) {
-    console.error("Unable to execute command (error code: %s)".error, resCode);
+    console.error("Unable to execute command (error code: %s)".red, resCode);
     process.exit(1);
   }
 }
@@ -72,9 +64,9 @@ function executeCordovaCommand(commandStr) {
 //========================================================================
 //Write out what we're running
 //========================================================4================
-console.log("\n%s".help, theStars);
-console.log("*    Cordova Create (cdva-create)    *".help);
-console.log(theStars.help);
+console.log("\n%s".green, theStars);
+console.log("* Cordova Create (cdva-create) *".green);
+console.log(theStars.green);
 
 //========================================================================
 //Sort out the command line arguments
@@ -101,7 +93,8 @@ if (userArgs.length > 2) {
   //Get the app's configuration settingds
   var theConfig = appConfig.getConfig();
   //Write them to the log while we're testing this thing...
-  //console.log('App Config: %s'.error, JSON.stringify(theConfig));
+  //console.log('App Config: %s'.red, JSON.stringify(theConfig));
+  //console.log('App Config: %s'.red, JSON.stringify(theConfig));
 
   //Grab the target folder
   var targetFolder = userArgs[0];
@@ -125,7 +118,7 @@ if (userArgs.length > 2) {
   //Check to make sure that the target folder does not already exist
   //========================================================================
   if (fs.existsSync(targetFolder)) {
-    console.error("\nTarget folder %s already exists".error, targetFolder);
+    console.error("\nTarget folder %s already exists".red, targetFolder);
     process.exit(1);
   }
 
@@ -148,7 +141,7 @@ if (userArgs.length > 2) {
   //========================================================================
   //create the Cordova project
   //========================================================================
-  console.log("\nCreating project".warn);
+  console.log("\nCreating project".yellow);
   console.log(theStars);
   var cmdStr = 'create ' + targetFolder + space + appID + space + quoteMark + appName + quoteMark;
   var copyFromPath = theConfig.copyFrom;
@@ -182,27 +175,27 @@ if (userArgs.length > 2) {
   //========================================================================
   //Change to the target folder directory
   //========================================================================
-  console.log("\nChanging to project folder (%s)".warn, targetFolder);
+  console.log("\nChanging to project folder (%s)".yellow, targetFolder);
   console.log(theStars);
   shelljs.pushd(targetFolder);
 
   //========================================================================
   // Platforms
   //========================================================================
-  console.log('\nAdding platforms [%s] to the project'.warn, targetPlatforms.join(commaSpace));
+  console.log('\nAdding platforms [%s] to the project'.yellow, targetPlatforms.join(commaSpace));
   console.log(theStars);
   if (targetPlatforms.length > 0) {
     executeCordovaCommand('platform add ' + targetPlatforms.join(space));
   } else {
     //I guess we're not adding any platforms
     //warn, but don't fail
-    console.log("No platforms specified, skipping".warn);
+    console.log("No platforms specified, skipping".yellow);
   }
 
   //========================================================================
   // Plugins
   //========================================================================
-  console.log("\nAdding Cordova Core Plugins".warn);
+  console.log("\nAdding Cordova Core Plugins".yellow);
   console.log(theStars);
   if (plugin_list.length > 0) {
     // Loop through plugins array rather than hard-coding this list
@@ -213,7 +206,7 @@ if (userArgs.length > 2) {
   } else {
     //I guess we're not adding any plugins
     //warn, but don't fail
-    console.log("No plugins specified in the configuration file, skipping...".warn);
+    console.log("No plugins specified in the configuration file, skipping...".yellow);
   }
 
   //========================================================================
@@ -240,16 +233,16 @@ if (userArgs.length > 2) {
     var child;
     child = exec(cmdStr, function (error, stdout, stderr) {
       if (error !== null) {
-        console.log("\nexec error: %s\n".error, error);
+        console.log("\nexec error: %s\n".red, error);
         process.exit(1);
       }
     });
   } else {
     //Otherwise, we don't know what to do, so toss out an error
     //Tell the user why we can't do anything
-    console.error("\nMissing one or more parameters, the proper command format is: ".error);
+    console.error("\nMissing one or more parameters, the proper command format is: ".red);
     //Show them the offending command line
-    console.error("\n  %s\n".error, cmdStr);
+    console.error("\n  %s\n".red, cmdStr);
     //Then display the help file
     showHelp();
     //We're done, so exit the app

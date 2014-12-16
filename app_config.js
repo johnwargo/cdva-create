@@ -1,7 +1,5 @@
 #!/usr/bin/env node
 
-/* jshint browser: true */
-
 var colors = require('colors'),
   fs = require('fs'),
   path = require('path'),
@@ -14,13 +12,6 @@ var debugMode = false;
 var blankStr = '';
 var stars = "***************************************";
 
-colors.setTheme({
-  info: 'grey',
-  help: 'green',
-  warn: 'yellow',
-  debug: 'blue',
-  error: 'red'
-});
 
 //Some values we need to execute
 var theOS = os.type();
@@ -95,7 +86,7 @@ function checkConfig(configFile, theConfig) {
     configChanged = true;
   }
 
-  //linkTo: Added 10/26/2014
+  //linkTo
   //Add support for the --linkto switch when creating new projects
   //Note: can't have both copyTo and linkTo
   if (theConfig.linkTo === undefined) {
@@ -104,7 +95,7 @@ function checkConfig(configFile, theConfig) {
     configChanged = true;
   }
 
-  //createParms: Added 10/26/2014
+  //createParms
   //Used to pass additional commands to the create command
   //specifically added to support passing a searchPath string when
   //creating a new project
@@ -126,14 +117,14 @@ function checkConfig(configFile, theConfig) {
         try {
           fs.chmodSync(configFile, 0777);
         } catch (err) {
-          console.error("Unable to set file permissions: %s".error, err.code);
-          console.error("Error object: %s".error, JSON.stringify(err));
+          console.error("Unable to set file permissions: %s".red, err.code);
+          console.error("Error object: %s".red, JSON.stringify(err));
           process.exit(1);
         }
       }
     } catch (err) {
-      console.error("Unable to write to file: %s".error, err.code);
-      console.error("Error object: %s".error, JSON.stringify(err));
+      console.error("Unable to write to file: %s".red, err.code);
+      console.error("Error object: %s".red, JSON.stringify(err));
       process.exit(1);
     }
   }
@@ -193,7 +184,7 @@ var getConfig = function () {
   // Does the configuration file exist?
   if (fs.existsSync(configPath)) {
     //Read the file
-    console.log("Reading configuation file");
+    console.log("Reading configuration file");
     var theData = fs.readFileSync(configPath, 'utf8');
     //Make sure the config has all of the options it should
     theConfig = checkConfig(configPath, JSON.parse(theData));
