@@ -103,6 +103,11 @@ Many people enable the option by default for all cordova commands, but this real
 
 Update History
 ==============
+June 25, 2015
+----------------
+Fixed issues that were affecting my ability to debug the module in WebStorm.
+Added validation of the copyFrom and linkTo parameters. If the specified path can't be resolved, the user is warned and the parameter skipped.
+ 
 November 5, 2014
 ----------------
 Added /config command-line option. Opens the application's configuration file in the system's default editor.  
