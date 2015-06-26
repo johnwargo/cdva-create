@@ -1,8 +1,12 @@
 {
   "name": "cdva-create",
   "description": "Automates the creation of an Apache Cordova project using a configurable set of platforms and plugins",
-  "version": "0.0.4",
-  "keywords": ["Cordova", "create", "project"],
+  "version": "0.0.5",
+  "keywords": [
+    "Cordova",
+    "create",
+    "project"
+  ],
   "author": {
     "name": "John M. Wargo",
     "email": "john@johnwargo.com",
@@ -19,7 +23,7 @@
   "preferGlobal": true,
   "license": "Apache-2.0",
   "dependencies": {
-    "colors": "^1.0.3",
+    "colors": "^1.1.2",
     "shelljs": "^0.3.0"
   },
   "engines": {
