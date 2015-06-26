@@ -1,4 +1,5 @@
 #!/usr/bin/env node
+/* jshint node: true, strict: true, undef: true, unused: true */
 
 //========================================================================
 // cordova-create
@@ -8,9 +9,11 @@
 //
 // by John M. Wargo (www.johnwargo.com)
 //========================================================================
+
+"use strict";
+
 var appConfig = require('./app_config.js');
 var colors = require('colors');
-//var exec = require('child_process').exec;
 var fs = require('fs');
 var path = require('path');
 var shelljs = require('shelljs');
@@ -21,6 +24,7 @@ var shelljs = require('shelljs');
 var cmdStr = 'cdva-create folder app_id app_name [platform list]';
 var commaSpace = ', ';
 var debug = false;
+var helpFile = 'help.txt';
 var plugin_list;
 var quoteMark = '"';
 var space = ' ';
@@ -35,7 +39,6 @@ function listArray(theName, theArray) {
 }
 
 function showHelp() {
-    var helpFile = 'help.txt';
     //read the help file
     var raw = fs.readFileSync(path.join(__dirname, helpFile)).toString('utf8');
     //write the contents of the help file to the console
@@ -74,8 +77,8 @@ console.log(theStars.green);
 var userArgs;
 //Is the first item 'node' or does it contain node.exe? Then we're testing!
 //Yes, I could simply look for the word 'node' in the first parameter, but these
-//are two specific cases I found in my tsting, so I coded specifially to them.
-if (process.argv[0].toLowerCase() == 'node' || process.argv[0].indexOf('node.exe') > -1) {
+//are two specific cases I found in my testing, so I coded specifically to them.
+if (process.argv[0].toLowerCase() === 'node' || process.argv[0].indexOf('node.exe') > -1) {
     //if (process.argv[0].toLowerCase() == 'node') {
     //whack the first two items off of the list of arguments
     //This removes the node entry as well as the cordova-create entry (the
@@ -87,7 +90,7 @@ if (process.argv[0].toLowerCase() == 'node' || process.argv[0].indexOf('node.exe
     userArgs = process.argv.slice(1);
 }
 //What's left at this point is just all of the parameters
-//If debug mode is enabled, print all of the paramaters to the console
+//If debug mode is enabled, print all of the parameters to the console
 if (debug) {
     listArray('Arguments', userArgs);
 }
@@ -105,7 +108,7 @@ if (userArgs.length > 2) {
     //grab the app name
     var appName = userArgs[2];
     //now whack off the initial (first three) arguments
-    var userArgs = userArgs.slice(3);
+    userArgs = userArgs.slice(3);
     //What's left is any target platforms (if we have any)
     var targetPlatforms = [];
     //Do we have any platforms on the command line?
@@ -146,7 +149,7 @@ if (userArgs.length > 2) {
     console.log("\nCreating project".yellow);
     console.log(theStars);
     //start by building the default command string
-    var cmdStr = 'create ' + targetFolder + space + appID + space + quoteMark + appName + quoteMark;
+    cmdStr = 'create ' + targetFolder + space + appID + space + quoteMark + appName + quoteMark;
     //Now lets see if the user has the copy-from feature enabled in the config file
     var copyFromPath = theConfig.copyFrom;
     //Do we have a copy-from path?
@@ -157,7 +160,7 @@ if (userArgs.length > 2) {
             console.log('Enabling --copy-from option (file path: %s)', copyFromPath);
             cmdStr += ' --copy-from "' + copyFromPath + quoteMark;
         } else {
-            //the copyfrom path won't resolve, so we'll skip it (and warn the user, of course)
+            //the copy-from path won't resolve, so we'll skip it (and warn the user, of course)
             console.log("\nUnable to resolve copy-from path (%s), skipping\n".red, copyFromPath);
         }
     } else {
@@ -234,7 +237,7 @@ if (userArgs.length > 2) {
 
 } else {
     //Do we have only one parameter and it's the word 'config'?
-    if (userArgs.length == 1 && userArgs[0].toLowerCase() == '/config') {
+    if (userArgs.length === 1 && userArgs[0].toLowerCase() === '/config') {
         console.log("Config command detected\n");
         //Then open the config file for editing
         //First get the config file name
@@ -243,19 +246,11 @@ if (userArgs.length > 2) {
         console.log("Launching '%s' using the default editor\n", configFile);
         //Figure out what command will launch the file depending on the
         //operating system
-        var cmdStr;
         if (appConfig.isWindows()) {
             cmdStr = "start " + configFile;
         } else {
             cmdStr = "open " + configFile;
         }
-        //var child;
-        //child = exec(cmdStr, function (error, stdout, stderr) {
-        //    if (error !== null) {
-        //        console.log("\nexec error: %s\n".red, error);
-        //        process.exit(1);
-        //    }
-        //});
 
         var resCode = shelljs.exec(cmdStr).code;
         if (resCode !== 0) {
