@@ -1,10 +1,9 @@
 #!/usr/bin/env node
 /* jshint node: true, strict: true, undef: true, unused: true */
-
 //========================================================================
 // cordova-create
 //
-// A node command for creating a simple Cordova project with a couple 
+// A node command for creating a simple Cordova project with a couple
 // of common plugins.
 //
 // by John M. Wargo (www.johnwargo.com)
