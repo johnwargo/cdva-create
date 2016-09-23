@@ -1,5 +1,3 @@
-#!/usr/bin/env node
-
 var colors = require('colors'),
   fs = require('fs'),
   path = require('path'),
@@ -36,7 +34,9 @@ function checkConfig(configFile, theConfig) {
   var default_platforms_linux = ['ubuntu'];
   var default_platforms_osx = ['android', 'ios'];
   var default_platforms_win = ['android', 'windows'];
-  var default_plugin_list = ['org.apache.cordova.console', 'org.apache.cordova.dialogs', 'org.apache.cordova.device'];
+  //var default_plugin_list = ['org.apache.cordova.console', 'org.apache.cordova.dialogs', 'org.apache.cordova.device'];
+  //Updated plugin list for Cordova 5 - 20160922 (yep, a little late)
+  var default_plugin_list = ['cordova-plugin-console', 'cordova-plugin-dialogs', 'cordova-plugin-device'];
 
   //Are all of the properties we need there?
   //populate them with the ones we need

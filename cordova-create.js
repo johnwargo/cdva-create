@@ -12,7 +12,7 @@
 "use strict";
 
 var appConfig = require('./app_config.js');
-var colors = require('colors');
+// var colors = require('colors');
 var fs = require('fs');
 var path = require('path');
 var shelljs = require('shelljs');
