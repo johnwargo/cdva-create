@@ -1,5 +1,5 @@
-Cordova Create (cdva-create)
-============================
+Cordova Create Utility (cdva-create) 
+====================================
 
 A module for creating a simple Cordova project with a couple of common platforms and plugins added. Essentially, this command replaces the common set of commands a Cordova developer types every (and I do mean every) time he or she creates a new Cordova project. 
 
