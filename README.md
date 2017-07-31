@@ -13,11 +13,11 @@ This module expects that you have a functional Apache Cordova development enviro
 
 This module has been tested on Windows, Macintosh OS X and Ubuntu Linux.
 
-An excellent resource for information on how to setup a Cordova development environment is my [Apache Cordova 3 Programming](http://www.cordovaprogramming.com) book.
+An excellent resource for information on how to setup a Cordova development environment is my [Apache Cordova 4 Programming](http://www.cordova4programming.com) and [Apache Cordova API Cookbook](cordovacookbook.com) books.
 
 Installation
 ============
-Install this module using npm by opening a terminal window and executing the following command:
+Install this module using `npm` by opening a terminal window and executing the following command:
 
 Windows:
 
