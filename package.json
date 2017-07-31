@@ -1,7 +1,7 @@
 {
   "name": "cdva-create",
   "description": "Automates the creation of an Apache Cordova project using a configurable set of platforms and plugins",
-  "version": "0.0.9",
+  "version": "0.0.10",
   "keywords": [
     "Cordova",
     "create",
