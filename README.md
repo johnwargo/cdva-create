@@ -107,6 +107,7 @@ Update History
 + June 25, 2015 - Fixed issues that were affecting my ability to debug the module in WebStorm. Added validation of the copyFrom and linkTo parameters. If the specified path can't be resolved, the user is warned and the parameter skipped.
 + November 5, 2014 - Added /config command-line option. Opens the application's configuration file in the system's default editor.  
 + October 28, 2014 - Added support for the Cordova CLI create command's --link-to switch. Added support for passing additional parameters to the create command. This was added in order to support adding a plugin search path to the project's configuration when first creating the project. This was needed to support the SAP Mobile Platform Hybrid SDK since the SDK plugins are installed locally and the CLI has issues locating dependent plugins when installed locally.  
- 
-* * *
-By [John M. Wargo](http://www.johnwargo.com) - if you like and/or use this module, why not pick up [one of my books](http://www.johnwargobooks.com)?
+
+***
+By [John M. Wargo](http://www.johnwargo.com) - If you find this code useful, and feel like thanking me for providing it, please consider making a purchase from [my Amazon Wish List](https://amzn.com/w/1WI6AAUKPT5P9). You can find information on many different topics on my [personal blog](http://www.johnwargo.com). Learn about all of my publications at [John Wargo Books](http://www.johnwargobooks.com). 
+            
