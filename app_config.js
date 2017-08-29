@@ -128,7 +128,7 @@ function checkConfig(configFile, theConfig) {
             process.exit(1);
         }
     }
-    //Return the updated configuation object to the calling function
+    //Return the updated configuration object to the calling function
     return theConfig;
 }
 
