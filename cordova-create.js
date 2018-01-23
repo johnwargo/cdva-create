@@ -22,7 +22,7 @@ var shelljs = require('shelljs');
 //*************************************
 var cmdStr = 'cdva-create folder app_id app_name [platform list]';
 var commaSpace = ', ';
-var debug = true;
+var debug = false;
 var helpFile = 'help.txt';
 var plugin_list;
 var quoteMark = '"';
