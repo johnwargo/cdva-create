@@ -76,7 +76,7 @@ function getLastPathItem(thePath, theSep) {
 //========================================================4================
 console.log("\n%s".green, theStars);
 console.log("* Cordova Create (cdva-create) *".green);
-console.log(theStars.green);
+console.log("%s".green, theStars);
 
 //========================================================================
 //Sort out the command line arguments
