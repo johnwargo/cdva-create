@@ -90,5 +90,7 @@ Many people enable the option by default for all `cordova` commands, but this re
 + October 28, 2014 - Added support for the Cordova CLI create command's --link-to switch. Added support for passing additional parameters to the create command. This was added in order to support adding a plugin search path to the project's configuration when first creating the project. This was needed to support the SAP Mobile Platform Hybrid SDK since the SDK plugins are installed locally and the CLI has issues locating dependent plugins when installed locally.  
 
 ***
-By [John M. Wargo](http://www.johnwargo.com) - If you find this code useful, and feel like thanking me for providing it, please consider making a purchase from [my Amazon Wish List](https://amzn.com/w/1WI6AAUKPT5P9). You can find information on many different topics on my [personal blog](http://www.johnwargo.com). Learn about all of my publications at [John Wargo Books](http://www.johnwargobooks.com). 
-            
+
+You can find information on many different topics on my [personal blog](http://www.johnwargo.com). Learn about all of my publications at [John Wargo Books](http://www.johnwargobooks.com).
+
+If you find this code useful and feel like thanking me for providing it, please consider <a href="https://www.buymeacoffee.com/johnwargo" target="_blank">Buying Me a Coffee</a>, or making a purchase from [my Amazon Wish List](https://amzn.com/w/1WI6AAUKPT5P9).
